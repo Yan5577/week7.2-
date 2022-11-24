@@ -18,9 +18,11 @@ const Movie = require("./utils/index");
   } else if (yargsObject.update) {
     console.log("entering update functionality")
     //code to update a record in the Movie document
+    await movieCollection.updateOne({title: yargsObject.title}, {$set: {actor: yargsObject.actor}})
   } else if (yargsObject.delete) {
     console.log("entering delete functionality")
     //code to delete a movie
+    await movieCollection.deleteOne({title: yargsObject.title});
   } else {
     console.log("Command not recognised");
   }
